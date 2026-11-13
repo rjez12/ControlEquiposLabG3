@@ -1,0 +1,31 @@
+# Compilación de Maven y Java
+target/
+*.class
+*.log
+
+# Configuración local de IntelliJ IDEA
+.idea/
+*.iml
+*.iws
+*.ipr
+out/
+
+# Variables de entorno y credenciales locales
+.env
+.env.*
+!.env.example
+persistence-local.xml
+application-local.properties
+
+# Archivos del sistema operativo
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Archivos temporales
+*.tmp
+*.bak
+*~
+
+# Conservar el Maven Wrapper
+!.mvn/wrapper/maven-wrapper.jar
