@@ -1,14 +1,263 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="CONTROLLER_NAME"
-            prefHeight="400.0" prefWidth="600.0">
+<VBox xmlns="http://javafx.com/javafx/21"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.desarrollo.controlequiposlabg3.controller.EquipoController"
+      stylesheets="@equipos.css"
+      styleClass="app"
+      prefWidth="1200"
+      prefHeight="780"
+      spacing="24">
 
-</AnchorPane>
+    <!-- Encabezado -->
+    <HBox alignment="CENTER_LEFT" spacing="16">
+        <StackPane styleClass="brand-icon">
+            <Label text="L" styleClass="brand-letter"/>
+        </StackPane>
+
+        <VBox spacing="4">
+            <Label text="LAB / INVENTARIO" styleClass="eyebrow"/>
+            <Label text="Control de equipos" styleClass="page-title"/>
+        </VBox>
+
+        <Region HBox.hgrow="ALWAYS"/>
+
+        <Label text="Gestión de laboratorio" styleClass="header-tag"/>
+    </HBox>
+
+    <!-- Área de trabajo -->
+    <HBox spacing="24" VBox.vgrow="ALWAYS">
+
+        <!-- Formulario desplazable en ventanas de menor altura -->
+        <ScrollPane fitToWidth="true"
+                    hbarPolicy="NEVER"
+                    prefWidth="332"
+                    minWidth="310"
+                    maxWidth="350"
+                    styleClass="form-scroll">
+
+            <content>
+                <VBox spacing="18" styleClass="card, form-card">
+
+                    <VBox spacing="6">
+                        <Label text="DETALLES DEL EQUIPO"
+                               styleClass="eyebrow"/>
+
+                        <Label fx:id="lblEstadoFormulario"
+                               text="Nuevo equipo"
+                               styleClass="section-title"/>
+
+                        <Label text="Completá los datos para agregar un equipo."
+                               wrapText="true"
+                               styleClass="muted"/>
+                    </VBox>
+
+                    <Separator/>
+
+                    <VBox spacing="7">
+                        <Label text="Código *" styleClass="field-label"/>
+                        <TextField fx:id="txtCodigo"
+                                   promptText="Ej. EQ-009"
+                                   maxWidth="Infinity"/>
+                    </VBox>
+
+                    <VBox spacing="7">
+                        <Label text="Nombre *" styleClass="field-label"/>
+                        <TextField fx:id="txtNombre"
+                                   promptText="Ej. Laptop de programación"
+                                   maxWidth="Infinity"/>
+                    </VBox>
+
+                    <VBox spacing="7">
+                        <Label text="Marca" styleClass="field-label"/>
+                        <TextField fx:id="txtMarca"
+                                   promptText="Ej. HP"
+                                   maxWidth="Infinity"/>
+                    </VBox>
+
+                    <VBox spacing="7">
+                        <Label text="Tipo de equipo *"
+                               styleClass="field-label"/>
+                        <ComboBox fx:id="cmbTipo"
+                                  promptText="Seleccionar tipo"
+                                  maxWidth="Infinity"/>
+                    </VBox>
+
+                    <VBox spacing="7">
+                        <Label text="Estado *" styleClass="field-label"/>
+                        <ComboBox fx:id="cmbEstado"
+                                  promptText="Seleccionar estado"
+                                  maxWidth="Infinity"/>
+                    </VBox>
+
+                    <VBox spacing="7">
+                        <Label text="Cantidad *" styleClass="field-label"/>
+                        <TextField fx:id="txtCantidad"
+                                   promptText="Ej. 5"
+                                   maxWidth="Infinity"/>
+                        <Label text="Ingresá un número entero igual o mayor que 0."
+                               wrapText="true"
+                               styleClass="hint"/>
+                    </VBox>
+
+                    <Label text="* Campos obligatorios"
+                           styleClass="hint"/>
+
+                    <Separator/>
+
+                    <Button fx:id="btnGuardar"
+                            text="Guardar equipo"
+                            onAction="#guardar"
+                            maxWidth="Infinity"
+                            styleClass="button-primary"/>
+
+                    <HBox spacing="10">
+                        <Button fx:id="btnActualizar"
+                                text="Actualizar"
+                                onAction="#actualizar"
+                                disable="true"
+                                maxWidth="Infinity"
+                                HBox.hgrow="ALWAYS"
+                                styleClass="button-secondary"/>
+
+                        <Button text="Limpiar"
+                                onAction="#limpiar"
+                                maxWidth="Infinity"
+                                HBox.hgrow="ALWAYS"
+                                styleClass="button-secondary"/>
+                    </HBox>
+
+                    <Button fx:id="btnEliminar"
+                            text="Eliminar equipo"
+                            onAction="#eliminar"
+                            disable="true"
+                            maxWidth="Infinity"
+                            styleClass="button-danger"/>
+                </VBox>
+            </content>
+        </ScrollPane>
+
+        <!-- Inventario -->
+        <VBox spacing="18"
+              minWidth="540"
+              HBox.hgrow="ALWAYS"
+              styleClass="card, inventory-card">
+
+            <HBox alignment="CENTER_LEFT" spacing="12">
+                <VBox spacing="6">
+                    <Label text="INVENTARIO" styleClass="eyebrow"/>
+                    <Label text="Equipos registrados"
+                           styleClass="section-title"/>
+                </VBox>
+
+                <Region HBox.hgrow="ALWAYS"/>
+
+                <Label fx:id="lblTotal"
+                       text="Sin cargar"
+                       styleClass="count-badge"/>
+            </HBox>
+
+            <Label text="Buscá por nombre o combiná la búsqueda con un tipo."
+                   wrapText="true"
+                   styleClass="muted"/>
+
+            <!-- Filtros -->
+            <VBox spacing="12" styleClass="filter-panel">
+                <HBox spacing="12" alignment="BOTTOM_LEFT">
+
+                    <VBox spacing="7" HBox.hgrow="ALWAYS">
+                        <Label text="Buscar por nombre"
+                               styleClass="field-label"/>
+                        <TextField fx:id="txtBuscar"
+                                   promptText="Escribí parte del nombre…"
+                                   onAction="#buscar"
+                                   maxWidth="Infinity"/>
+                    </VBox>
+
+                    <VBox spacing="7" prefWidth="180">
+                        <Label text="Tipo" styleClass="field-label"/>
+                        <ComboBox fx:id="cmbFiltroTipo"
+                                  promptText="Todos los tipos"
+                                  maxWidth="Infinity"/>
+                    </VBox>
+                </HBox>
+
+                <HBox alignment="CENTER_RIGHT" spacing="10">
+                    <Button text="Restablecer"
+                            onAction="#limpiarFiltros"
+                            styleClass="button-secondary"/>
+
+                    <Button text="Aplicar filtros"
+                            onAction="#buscar"
+                            styleClass="button-primary"/>
+                </HBox>
+            </VBox>
+
+            <!-- Tabla -->
+            <TableView fx:id="tablaEquipos"
+                       VBox.vgrow="ALWAYS"
+                       minHeight="200">
+
+                <placeholder>
+                    <VBox alignment="CENTER" spacing="10">
+                        <Label text="Sin equipos para mostrar"
+                               styleClass="empty-title"/>
+                        <Label text="Agregá un equipo o revisá los filtros."
+                               styleClass="muted"/>
+                    </VBox>
+                </placeholder>
+
+                <columns>
+                    <TableColumn fx:id="colCodigo"
+                                 text="Código"
+                                 prefWidth="95"
+                                 minWidth="85"/>
+
+                    <TableColumn fx:id="colNombre"
+                                 text="Nombre"
+                                 prefWidth="200"
+                                 minWidth="150"/>
+
+                    <TableColumn fx:id="colMarca"
+                                 text="Marca"
+                                 prefWidth="100"
+                                 minWidth="85"/>
+
+                    <TableColumn fx:id="colTipo"
+                                 text="Tipo"
+                                 prefWidth="130"
+                                 minWidth="110"/>
+
+                    <TableColumn fx:id="colEstado"
+                                 text="Estado"
+                                 prefWidth="165"
+                                 minWidth="150"/>
+
+                    <TableColumn fx:id="colCantidad"
+                                 text="Cantidad"
+                                 prefWidth="85"
+                                 minWidth="80"
+                                 styleClass="quantity-column"/>
+                </columns>
+            </TableView>
+
+            <Label text="Seleccioná una fila para editar o eliminar el equipo."
+                   wrapText="true"
+                   styleClass="hint"/>
+        </VBox>
+    </HBox>
+
+    <!-- Pie -->
+    <HBox alignment="CENTER_LEFT">
+        <Label text="Control de equipos · Laboratorio"
+               styleClass="footer-text"/>
+
+        <Region HBox.hgrow="ALWAYS"/>
+
+        <Label text="Inventario organizado, decisiones claras."
+               styleClass="footer-text"/>
+    </HBox>
+</VBox>

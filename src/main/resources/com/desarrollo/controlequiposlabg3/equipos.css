@@ -1,0 +1,391 @@
+/* ==========================================
+   COLORES Y TIPOGRAFÍA
+   Colores reutilizables propios de JavaFX
+   ========================================== */
+
+.root,
+.app
+    {
+    -ui-background: #f5f6f8;
+    -ui-surface: #ffffff;
+    -ui-text: #17212f;
+    -ui-muted: #59677a;
+    -ui-border: #dce2e9;
+    -ui-accent: #315ce7;
+    -ui-accent-hover: #244bc7;
+    -ui-selection: #eaf0ff;
+    -ui-danger: #b42332;
+
+    -fx-font-family: "Segoe UI";
+    -fx-font-size: 13px;
+    -fx-background-color: -ui-background;
+}
+
+.app {
+    -fx-padding: 22;
+    -fx-spacing: 20;
+    -fx-background-color: -ui-background;
+}
+
+.label {
+    -fx-text-fill: -ui-text;
+}
+
+/* ==========================================
+   ENCABEZADO
+   ========================================== */
+
+.brand-icon {
+    -fx-background-color: -ui-text;
+    -fx-background-radius: 12;
+    -fx-min-width: 44;
+    -fx-min-height: 44;
+    -fx-max-width: 44;
+    -fx-max-height: 44;
+}
+
+.brand-letter {
+    -fx-text-fill: white;
+    -fx-font-size: 1.7em;
+    -fx-font-weight: bold;
+}
+
+.page-title {
+    -fx-font-size: 1.85em;
+    -fx-font-weight: bold;
+}
+
+.eyebrow {
+    -fx-text-fill: -ui-muted;
+    -fx-font-size: 0.77em;
+    -fx-font-weight: bold;
+}
+
+.header-tag {
+    -fx-background-color: transparent;
+    -fx-text-fill: -ui-muted;
+    -fx-font-size: 0.85em;
+    -fx-padding: 6 0;
+}
+
+/* ==========================================
+   SUPERFICIES
+   ========================================== */
+
+.card {
+    -fx-background-color: -ui-surface;
+    -fx-background-radius: 12;
+    -fx-border-color: -ui-border;
+    -fx-border-radius: 12;
+    -fx-border-width: 1;
+}
+
+.form-card,
+.inventory-card {
+    -fx-padding: 18;
+    -fx-spacing: 13;
+}
+
+.section-title {
+    -fx-font-size: 1.38em;
+    -fx-font-weight: bold;
+}
+
+.muted {
+    -fx-text-fill: -ui-muted;
+    -fx-font-size: 0.92em;
+}
+
+.hint,
+.footer-text {
+    -fx-text-fill: -ui-muted;
+    -fx-font-size: 0.85em;
+}
+
+.count-badge {
+    -fx-background-color: #eef2f8;
+    -fx-background-radius: 6;
+    -fx-text-fill: #40516a;
+    -fx-font-size: 0.85em;
+    -fx-font-weight: bold;
+    -fx-padding: 5 9;
+}
+
+.separator .line {
+    -fx-border-color: -ui-border;
+    -fx-border-width: 1 0 0 0;
+}
+
+/* ==========================================
+   CAMPOS
+   ========================================== */
+
+.field-label {
+    -fx-font-size: 0.92em;
+    -fx-font-weight: bold;
+    -fx-text-fill: #344054;
+}
+
+.text-field,
+.combo-box {
+    -fx-background-color: -ui-surface;
+    -fx-background-insets: 0;
+    -fx-background-radius: 7;
+    -fx-border-color: #ccd4df;
+    -fx-border-radius: 7;
+    -fx-border-width: 1;
+    -fx-min-height: 36;
+    -fx-pref-height: 36;
+}
+
+.text-field {
+    -fx-padding: 8 10;
+    -fx-text-fill: -ui-text;
+    -fx-prompt-text-fill: #687689;
+    -fx-highlight-fill: -ui-selection;
+    -fx-highlight-text-fill: -ui-text;
+}
+
+.combo-box {
+    -fx-padding: 0 5;
+}
+
+.combo-box > .list-cell {
+    -fx-padding: 7 6;
+    -fx-text-fill: -ui-text;
+}
+
+.combo-box .arrow {
+    -fx-background-color: #687689;
+}
+
+.text-field:hover,
+.combo-box:hover {
+    -fx-border-color: #93a2b7;
+}
+
+.text-field:focused,
+.combo-box:focused {
+    -fx-border-color: -ui-accent;
+    -fx-effect: dropshadow(
+            gaussian, rgba(49, 92, 231, 0.17), 5, 0, 0, 0
+    );
+}
+
+.combo-box-popup .list-view {
+    -fx-background-color: -ui-surface;
+    -fx-border-color: -ui-border;
+    -fx-padding: 4;
+}
+
+.combo-box-popup .list-cell {
+    -fx-background-color: -ui-surface;
+    -fx-text-fill: -ui-text;
+    -fx-padding: 9 12;
+}
+
+.combo-box-popup .list-cell:filled:hover,
+.combo-box-popup .list-cell:filled:selected {
+    -fx-background-color: -ui-selection;
+    -fx-text-fill: #2144a7;
+}
+
+.text-field.field-error,
+.combo-box.field-error {
+    -fx-border-color: -ui-danger;
+    -fx-background-color: #fff8f8;
+}
+
+/* ==========================================
+   ACCIONES
+   ========================================== */
+
+.button {
+    -fx-background-insets: 0;
+    -fx-background-radius: 7;
+    -fx-border-radius: 7;
+    -fx-border-width: 1;
+    -fx-border-color: transparent;
+    -fx-min-height: 36;
+    -fx-padding: 8 14;
+    -fx-font-size: 0.92em;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+}
+
+.button-primary {
+    -fx-background-color: -ui-accent;
+    -fx-text-fill: white;
+}
+
+.button-primary:hover {
+    -fx-background-color: -ui-accent-hover;
+}
+
+.button-primary:pressed {
+    -fx-background-color: #1d3c9e;
+}
+
+.button-secondary {
+    -fx-background-color: -ui-surface;
+    -fx-border-color: -ui-border;
+    -fx-text-fill: #344054;
+}
+
+.button-secondary:hover {
+    -fx-background-color: #f1f4f8;
+    -fx-border-color: #aebaca;
+}
+
+.button-secondary:pressed {
+    -fx-background-color: #e6ebf2;
+}
+
+.button-danger {
+    -fx-background-color: transparent;
+    -fx-text-fill: -ui-danger;
+}
+
+.button-danger:hover {
+    -fx-background-color: #fff0f1;
+}
+
+.button-danger:pressed {
+    -fx-background-color: #ffe0e4;
+}
+
+.button:focused {
+    -fx-border-color: -ui-accent;
+    -fx-effect: dropshadow(
+            gaussian, rgba(49, 92, 231, 0.25), 5, 0, 0, 0
+    );
+}
+
+.button:disabled {
+    -fx-opacity: 0.45;
+    -fx-cursor: default;
+}
+
+/* ==========================================
+   FILTROS
+   ========================================== */
+
+.filter-panel {
+    -fx-background-color: #f7f9fc;
+    -fx-background-radius: 8;
+    -fx-padding: 12;
+    -fx-spacing: 10;
+}
+
+/* ==========================================
+   TABLA
+   ========================================== */
+
+.table-view {
+    -fx-background-color: -ui-surface;
+    -fx-background-insets: 0;
+    -fx-padding: 0;
+    -fx-border-color: -ui-border;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-fixed-cell-size: 42;
+    -fx-table-cell-border-color: transparent;
+}
+
+.table-view .column-header-background {
+    -fx-background-color: #f3f6fa;
+    -fx-background-radius: 8 8 0 0;
+}
+
+.table-view .column-header,
+.table-view .filler {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent transparent -ui-border transparent;
+    -fx-border-width: 0 0 1 0;
+    -fx-pref-height: 40;
+}
+
+.table-view .column-header .label {
+    -fx-text-fill: #526078;
+    -fx-font-size: 0.85em;
+    -fx-font-weight: bold;
+    -fx-alignment: CENTER_LEFT;
+    -fx-padding: 0 10;
+}
+
+.table-row-cell,
+.table-row-cell:odd {
+    -fx-background-color: -ui-surface;
+    -fx-background-insets: 0;
+}
+
+.table-row-cell:filled:hover {
+    -fx-background-color: #f5f8ff;
+}
+
+.table-row-cell:filled:selected {
+    -fx-background-color: -ui-selection;
+}
+
+.table-view .table-cell {
+    -fx-text-fill: #344054;
+    -fx-padding: 0 10;
+    -fx-alignment: CENTER_LEFT;
+    -fx-border-color: transparent transparent #edf0f5 transparent;
+    -fx-border-width: 0 0 1 0;
+}
+
+.table-row-cell:filled:selected .table-cell {
+    -fx-text-fill: #203e91;
+}
+
+.table-view:focused {
+    -fx-border-color: -ui-accent;
+}
+
+.table-cell.quantity-column {
+    -fx-alignment: CENTER;
+    -fx-font-weight: bold;
+}
+
+.empty-title {
+    -fx-font-size: 1.08em;
+    -fx-font-weight: bold;
+    -fx-text-fill: #43516a;
+}
+
+/* ==========================================
+   DESPLAZAMIENTO
+   ========================================== */
+
+.form-scroll,
+.form-scroll > .viewport {
+    -fx-background-color: transparent;
+}
+
+.form-scroll {
+    -fx-background-insets: 0;
+    -fx-padding: 0;
+}
+
+.scroll-bar {
+    -fx-background-color: transparent;
+}
+
+.scroll-bar .track {
+    -fx-background-color: transparent;
+}
+
+.scroll-bar .thumb {
+    -fx-background-color: #c5cfdd;
+    -fx-background-radius: 8;
+}
+
+.scroll-bar .thumb:hover {
+    -fx-background-color: #9cacc1;
+}
+
+.scroll-bar .increment-button,
+.scroll-bar .decrement-button {
+    -fx-background-color: transparent;
+}
